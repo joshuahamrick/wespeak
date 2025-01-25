@@ -1,11 +1,13 @@
+import { API_URL } from "../config.js";
+
 export const getUserByEmail = (email) => {
-  return fetch(`http://localhost:8088/users?email=${email}`).then((res) =>
+  return fetch(`${API_URL}/users?email=${email}`).then((res) =>
     res.json()
   );
 };
 
 export const createUser = (customer) => {
-  return fetch("http://localhost:8088/users", {
+  return fetch(`${API_URL}/users`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -15,17 +17,17 @@ export const createUser = (customer) => {
 };
 
 export const getAllUsers = () => {
-  return fetch(`http://localhost:8088/users`).then((res) => res.json());
+  return fetch(`${API_URL}/users`).then((res) => res.json());
 };
 
 export const getUserById = (userId) => {
-  return fetch(`http://localhost:8088/users?id=${userId}`).then((res) =>
+  return fetch(`${API_URL}/users?id=${userId}`).then((res) =>
     res.json()
   );
 };
 
 export const updateUser = (userUpdate) => {
-  return fetch(`http://localhost:8088/users/${userUpdate.id}`, {
+  return fetch(`${API_URL}/users/${userUpdate.id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(userUpdate),
@@ -33,5 +35,5 @@ export const updateUser = (userUpdate) => {
 };
 
 export const deleteUserProfile = (userId) => {
-  return fetch(`http://localhost:8088/users/${userId}`, { method: "DELETE" });
+  return fetch(`${API_URL}/users/${userId}`, { method: "DELETE" });
 };

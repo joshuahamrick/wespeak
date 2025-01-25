@@ -1,3 +1,5 @@
+import { API_URL } from "../config.js";
+
 export const getUserGroups = () => {
-  return fetch("http://localhost:8088/userGroups").then((res) => res.json());
+  return fetch(`${API_URL}/userGroups`).then((res) => res.json());
 };
