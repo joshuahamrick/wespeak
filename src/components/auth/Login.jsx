@@ -33,7 +33,7 @@ export const Login = () => {
     <main className="container-login">
       <section>
         <form className="form-login" onSubmit={handleLogin}>
-          <h1>Weseak</h1>
+          <h1>Wespeak</h1>
           <h2>Please sign in</h2>
           <fieldset>
             <div className="form-group">
