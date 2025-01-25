@@ -7,7 +7,22 @@ const __dirname = dirname(__filename);
 
 const server = jsonServer.create();
 const router = jsonServer.router(join(__dirname, 'database.json'));
-const middlewares = jsonServer.defaults();
+const middlewares = jsonServer.defaults({
+  readOnly: false,
+  noCors: false,
+  bodyParser: true
+});
+
+// Handle CORS preflight requests
+server.options('*', (req, res) => {
+  res.sendStatus(200);
+});
+
+// Add custom middleware for error handling
+server.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
 
 server.use(middlewares);
 server.use(router);
